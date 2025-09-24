@@ -133,12 +133,12 @@
       var ua = navigator.userAgent || "";
       var isMobileUA = /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(ua);
       var smallViewport = Math.min(screen.width || 0, screen.height || 0) <= 480;
-      var alreadyMobile = /indexmobile\.html$/i.test(location.pathname);
+      var alreadyMobile = /m.index\.html$/i.test(location.pathname);
       if ((isMobileUA || smallViewport) && !alreadyMobile) {
         // Preserve query/hash if present
         var q = location.search || "";
         var h = location.hash || "";
-        location.replace("indexMobile.html" + q + h);
+        location.replace("m.index.html" + q + h);
       }
     } catch (e) {
       // no-op
@@ -146,7 +146,7 @@
   })();
   </script>
   <noscript>
-    <meta http-equiv="refresh" content="0; url=indexMobile.html">
+    <meta http-equiv="refresh" content="0; url=m.index.html">
   </noscript>
 
 </head>
