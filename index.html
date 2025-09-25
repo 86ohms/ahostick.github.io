@@ -128,23 +128,37 @@
 
   <!-- Auto-redirect to mobile layout -->
   <script>
-  (function () {
-    try {
-      var ua = navigator.userAgent || "";
-      var isMobileUA = /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(ua);
-      var smallViewport = Math.min(screen.width || 0, screen.height || 0) <= 480;
-      var alreadyMobile = /m.index\.html$/i.test(location.pathname);
-      if ((isMobileUA || smallViewport) && !alreadyMobile) {
-        // Preserve query/hash if present
-        var q = location.search || "";
-        var h = location.hash || "";
-        location.replace("m.index.html" + q + h);
-      }
-    } catch (e) {
-      // no-op
+(function () {
+  try {
+    // 1) Do not redirect inside iframes / embedded previews
+    var isEmbedded = (function () {
+      try { return window.top !== window.self; } catch (e) { return true; }
+    })();
+
+    // 2) Detect LinkedIn (app, in-app webview, bot, or preview)
+    var ua = navigator.userAgent || "";
+    var ref = document.referrer || "";
+    var isLinkedIn = /LinkedIn|LinkedInApp|linkedinbot/i.test(ua) || /linkedin\.com/i.test(ref);
+
+    // 3) Opt-out query switch, e.g. ?no-redirect=1
+    var noRedirect = /(^|[?&])no-redirect=1([&#]|$)/.test(location.search);
+
+    // 4) Real viewport intent (use CSS media query rather than 'screen')
+    var looksNarrow = window.matchMedia && window.matchMedia("(max-width: 640px)").matches;
+
+    // 5) Already on mobile?
+    var alreadyMobile = /indexMobile\.html$/i.test(location.pathname);
+
+    // 6) Only redirect for real, top-level, non-LinkedIn, narrow viewports
+    if (!isEmbedded && !isLinkedIn && !noRedirect && looksNarrow && !alreadyMobile) {
+      var q = location.search || "";
+      var h = location.hash || "";
+      location.replace("indexMobile.html" + q + h);
     }
-  })();
-  </script>
+  } catch (e) { /* no-op */ }
+})();
+</script>
+
   <noscript>
     <meta http-equiv="refresh" content="0; url=m.index.html">
   </noscript>
