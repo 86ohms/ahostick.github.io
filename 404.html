@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Page Not Found — Redirecting…</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="refresh" content="0; url=https://86ohms.github.io/ahostick.github.io/">
+  <script>
+    // Catch-all redirect to the homepage for stale paths (e.g., m.index.html)
+    (function() {
+      var target = "https://86ohms.github.io/ahostick.github.io/";
+      if (window.location.search && window.location.search.length > 1) {
+        target += window.location.search;
+      }
+      window.location.replace(target);
+    })();
+  </script>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:#0e0f13; color:#e8ecf1; display:flex; min-height:100vh; align-items:center; justify-content:center; }
+    a { color:#6ae0ff; }
+    .box { padding: 24px 28px; border:1px solid #222633; border-radius:12px; background:#151821; }
+    code{background:#11141a;padding:2px 6px;border-radius:6px;border:1px solid #222633}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <p>This page doesn’t exist. Redirecting to <a href="https://86ohms.github.io/ahostick.github.io/">home</a>…</p>
+    <p>If you reached this from a saved LinkedIn link (e.g., <code>m.index.html</code>), the new canonical URL is:</p>
+    <p><code>https://86ohms.github.io/ahostick.github.io/</code></p>
+  </div>
+</body>
+</html>

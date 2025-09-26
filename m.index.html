@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting…</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical target -->
+  <link rel="canonical" href="https://86ohms.github.io/ahostick.github.io/">
+  <!-- Fast meta refresh as primary -->
+  <meta http-equiv="refresh" content="0; url=https://86ohms.github.io/ahostick.github.io/">
+  <script>
+    // JS fallback (preferred to avoid polluting back history)
+    (function() {
+      var target = "https://86ohms.github.io/ahostick.github.io/";
+      if (window.location.search && window.location.search.length > 1) {
+        // preserve any cache-buster or query string, but strip 'm.index.html'
+        target += window.location.search;
+      }
+      window.location.replace(target);
+    })();
+  </script>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:#0e0f13; color:#e8ecf1; display:flex; min-height:100vh; align-items:center; justify-content:center; }
+    a { color:#6ae0ff; }
+    .box { padding: 24px 28px; border:1px solid #222633; border-radius:12px; background:#151821; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <p>Redirecting to <a href="https://86ohms.github.io/ahostick.github.io/">home</a>…</p>
+  </div>
+</body>
+</html>
